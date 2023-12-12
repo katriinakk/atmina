@@ -1,21 +1,34 @@
 from tkinter import *
-#from PIL import ImageTk
+from PIL import ImageTk, Image
 logs=Tk()
 logs.title("Vienādie attēli")
 
+bgimg=ImageTk.PhotoImage(Image.open("77.jpg"))
 
-btn0=Button(width=20, height = 10)
-btn1=Button(width=20, height = 10)
-btn2=Button(width=20, height = 10)
-btn3=Button(width=20, height = 10)
-btn4=Button(width=20, height = 10)
-btn5=Button(width=20, height = 10)
-btn6=Button(width=20, height = 10)
-btn7=Button(width=20, height = 10)
-btn8=Button(width=20, height = 10)
-btn9=Button(width=20, height = 10)
-btn10=Button(width=20, height =10)
-btn11=Button(width=20, height = 10)
+
+img1=ImageTk.PhotoImage(Image.open("1.png"))
+img2=ImageTk.PhotoImage(Image.open("2.png"))
+img3=ImageTk.PhotoImage(Image.open("3.png"))
+img4=ImageTk.PhotoImage(Image.open("4.png"))
+img5=ImageTk.PhotoImage(Image.open("5.png"))
+img6=ImageTk.PhotoImage(Image.open("6.png"))
+
+
+
+btn0=Button(width=200, height = 200, image = bgimg, bg=("salmon"))
+btn1=Button(width=200, height = 200, image = bgimg, bg=("salmon"))
+btn2=Button(width=200, height = 200, image = bgimg, bg=("salmon"))
+btn3=Button(width=200, height = 200, image = bgimg, bg=("salmon"))
+btn4=Button(width=200, height = 200, image = bgimg, bg=("salmon"))
+btn5=Button(width=200, height = 200, image = bgimg, bg=("salmon"))
+btn6=Button(width=200, height = 200, image = bgimg, bg=("salmon"))
+btn7=Button(width=200, height = 200, image = bgimg, bg=("salmon"))
+btn8=Button(width=200, height = 200, image = bgimg, bg=("salmon"))
+btn9=Button(width=200, height = 200, image = bgimg, bg=("salmon"))
+btn10=Button(width=200, height =200, image = bgimg, bg=("salmon"))
+btn11=Button(width=200, height = 200, image = bgimg, bg=("salmon"))
+
+
 
 btn0.grid(row=1, column=1)
 btn1.grid(row=1, column=2)
