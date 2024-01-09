@@ -23,34 +23,8 @@ correct = 0
 answers=[]
 answersD={} #kad piespiests, salīdzināt ar attēliem no saraksta
 
-#
-#
-#
-#
-#
-#
 
-def click(btn, number):
-    global count, correct, answers, answersD
-    if btn["image"] == "77.jpg" and count<2:
-        btn["image"] == imglist[number]
-        count+=1
-        answers.append(number)
-        answersD[btn]=imglist[number]
-    if len(answers)==2:
-        if imglist[answers[0]]==imglist[answers[1]]: #salīdzina attēlus, kas saglabāts vārdnīcā ar attēl sarakstu
-            for key in answersD:
-                 key["state"]=DISABLED
-            if correct==2:
-                messagebox.showinfo("uzminēji")
-    else:
-        #messagebox.showinfo("neuzminēji")
-        for key in answersD:
-            key["image"]="77.jpg"
-        count=0
-        answers=[]
-        answersD={}
-    return 0
+
 
 
 btn0=Button(width=200, height = 200, image = bgimg, bg=("salmon"), command=lambda:click(btn0, 0))
@@ -65,6 +39,39 @@ btn8=Button(width=200, height = 200, image = bgimg, bg=("salmon"), command=lambd
 btn9=Button(width=200, height = 200, image = bgimg, bg=("salmon"), command=lambda:click(btn9, 9))
 btn10=Button(width=200, height =200, image = bgimg, bg=("salmon"), command=lambda:click(btn10, 10))
 btn11=Button(width=200, height = 200, image = bgimg, bg=("salmon"), command=lambda:click(btn11, 11))
+
+
+#
+#
+#
+#
+#
+#
+
+def click(btn, number):
+    global count, correct, answers, answersD
+    if btn["image"] == "pyimage6" and count<2:
+        btn["image"] == imglist[number]
+        count+=1
+        answers.append(number)
+        answersD[btn]=imglist[number]
+    if len(answers)==2:
+        if imglist[answers[0]]==imglist[answers[1]]: #salīdzina attēlus, kas saglabāts vārdnīcā ar attēl sarakstu
+            for key in answersD:
+                key["state"]=DISABLED
+            correct+=2
+            if correct==2:
+                messagebox.showinfo("uzminēji")
+                correct=0
+        else:
+            messagebox.showinfo("neuzminēji")
+            for key in answersD:
+                key["image"]="pyimage6"
+        count=0
+        answers=[]
+        answersD={}
+    return 0
+
 
 
 
