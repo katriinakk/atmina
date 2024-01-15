@@ -7,39 +7,111 @@ from tkinter import messagebox
 
 
 
+
 logs=Tk()
 logs.title("Vienādie attēli")
 
 bgimg=ImageTk.PhotoImage(Image.open("77.jpg"))
 
+galvenaIzvelne=Menu(logs)
+logs.config(menu=galvenaIzvelne)
+
+
+
+
+
+
+def reset():
+    global count,correctAnswers,answers,answer_dict
+    btn0.config(state=NORMAL)
+    btn1.config(state=NORMAL)
+    btn2.config(state=NORMAL)
+    btn3.config(state=NORMAL)
+    btn4.config(state=NORMAL)
+    btn5.config(state=NORMAL)
+    btn6.config(state=NORMAL)
+    btn7.config(state=NORMAL)
+    btn8.config(state=NORMAL)
+    btn9.config(state=NORMAL)
+    btn10.config(state=NORMAL)
+    btn11.config(state=NORMAL)
+
+    btn0['image']='pyimage1'
+    btn1['image']='pyimage1'
+    btn2['image']='pyimage1'
+    btn3['image']='pyimage1'
+    btn4['image']='pyimage1'
+    btn5['image']='pyimage1'
+    btn6['image']='pyimage1'
+    btn7['image']='pyimage1'
+    btn8['image']='pyimage1'
+    btn9['image']='pyimage1'
+    btn10['image']='pyimage1'
+    btn11['image']='pyimage1'
+    random.shuffle(imglist)
+    answers=[]
+    answer_dict={}
+    count=0
+    correctAnswers=0
+    return 0
+
+def info():
+    logs=Toplevel()
+    logs.title("Informācija")
+    desc=Label(logs,text="Mērķis: atrast vienādus attēla pārus.")
+    desc.grid(row=0,column=0)
+    desc=Label(logs,text="Ir doti 2 gājieni atklāt jebkuru bildi, pēc tam bildes aizklājas atpakaļ un atkal ir doti 2 gājieni.")
+    desc.grid(row=1,column=0)
+    desc=Label(logs,text="Spēle beidzas, kas visi iespējamie attēlu pāri ir atrasti.")
+    desc.grid(row=2,column=0)
+    desc=Label(logs,text="Vēlu veiksmi :)", fg=("darkgrey"))
+    desc.grid(row=3,column=0)
+
+
+
+opcijas=Menu(logs,tearoff=False)
+galvenaIzvelne.add_cascade(label='Opcijas',menu=opcijas)
+
+opcijas.add_command(label='Jauna spēle',command=reset)
+opcijas.add_command(label='Iziet',command=logs.quit)
+
+
+galvenaIzvelne.add_command(label='Par programmu',command=info)
+
+
+
 
 
 def click(btn, number):
-    global count, correct, answers, answersD
-    if btn["image"] == "pyimage1" and count<2:
-        btn["image"] == imglist[number]
+    global count, correctA,answers,answerd
+    if btn["image"]=="pyimage1" and count<2:
+        btn["image"]=imglist[number]
         count+=1
         answers.append(number)
-        answersD[btn]=imglist[number]
+        answerd[btn]=imglist[number]
     if len(answers)==2:
-        if imglist[answers[0]]==imglist[answers[1]]: #salīdzina attēlus, kas saglabāts vārdnīcā ar attēl sarakstu
-            for key in answersD:
+        if imglist[answers[0]]==imglist[answers[1]]:
+            for key in answerd:
                 key["state"]=DISABLED
-            correct+=2
-            if correct==2:
+            correctA+=2
+            if correctA==2:
                 messagebox.showinfo("uzminēji")
-                correct=0
+                correctA=0
         else:
-            #messagebox.showinfo("neuzminēji")
-            for key in answersD:
+            messagebox.showinfo('neuzminēji')
+            for key in answerd:
                 key["image"]="pyimage1"
-        count=0
+        count = 0
         answers=[]
-        answersD={}
+        answerd={}
     return 0
 
 
 
+count = 0
+correctA = 0
+answers=[]
+answerd={} #kad piespiests, salīdzināt ar attēliem no saraksta
 
 
 img1=ImageTk.PhotoImage(Image.open("1.png"))
@@ -51,15 +123,6 @@ img6=ImageTk.PhotoImage(Image.open("6.png"))
 
 imglist=[img1, img1, img2, img2, img3, img3, img4, img4, img5, img5, img6, img6]
 random.shuffle(imglist)
-
-
-
-count = 0
-correct = 0
-answers=[]
-answersD={} #kad piespiests, salīdzināt ar attēliem no saraksta
-
-
 
 
 
