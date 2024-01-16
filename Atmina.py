@@ -13,7 +13,7 @@ logs.title("Vienādie attēli")
 
 bgimg=ImageTk.PhotoImage(Image.open("77.jpg"))
 
-galvenaIzvelne=Menu(logs)
+galvenaIzvelne=Menu(logs) #izveido izvēlni
 logs.config(menu=galvenaIzvelne)
 
 
@@ -21,9 +21,9 @@ logs.config(menu=galvenaIzvelne)
 
 
 
-def reset():
+def reset(): #spēles reset funkcija
     global count,correctAnswers,answers,answer_dict
-    btn0.config(state=NORMAL)
+    btn0.config(state=NORMAL) #padara pogas aktīvas/izmantojamas
     btn1.config(state=NORMAL)
     btn2.config(state=NORMAL)
     btn3.config(state=NORMAL)
@@ -56,27 +56,27 @@ def reset():
     return 0
 
 def info():
-    logs=Toplevel()
+    logs=Toplevel() #informācijas logs
     logs.title("Informācija")
     desc=Label(logs,text="Mērķis: atrast vienādus attēla pārus.")
     desc.grid(row=0,column=0)
     desc=Label(logs,text="Ir doti 2 gājieni atklāt jebkuru bildi, pēc tam bildes aizklājas atpakaļ un atkal ir doti 2 gājieni.")
     desc.grid(row=1,column=0)
-    desc=Label(logs,text="Spēle beidzas, kas visi iespējamie attēlu pāri ir atrasti.")
+    desc=Label(logs,text="Spēle beidzas, kad visi iespējamie attēlu pāri ir atrasti.")
     desc.grid(row=2,column=0)
     desc=Label(logs,text="Vēlu veiksmi :)", fg=("darkgrey"))
     desc.grid(row=3,column=0)
 
 
 
-opcijas=Menu(logs,tearoff=False)
+opcijas=Menu(logs,tearoff=False) #uztaisa izvēlni
 galvenaIzvelne.add_cascade(label='Opcijas',menu=opcijas)
 
 opcijas.add_command(label='Jauna spēle',command=reset)
 opcijas.add_command(label='Iziet',command=logs.quit)
 
 
-galvenaIzvelne.add_command(label='Par programmu',command=info)
+galvenaIzvelne.add_command(label='Par programmu',command=info) #izmanto funkciju info
 
 
 
@@ -85,14 +85,14 @@ galvenaIzvelne.add_command(label='Par programmu',command=info)
 def click(btn, number):
     global count, correctA,answers,answerd
     if btn["image"]=="pyimage1" and count<2:
-        btn["image"]=imglist[number]
+        btn["image"]=imglist[number] #pagriež attēlu
         count+=1
         answers.append(number)
         answerd[btn]=imglist[number]
     if len(answers)==2:
-        if imglist[answers[0]]==imglist[answers[1]]:
+        if imglist[answers[0]]==imglist[answers[1]]: #salīdzina attēlus
             for key in answerd:
-                key["state"]=DISABLED
+                key["state"]=DISABLED #padara pogu neaktīvu/neizmantojamu
             correctA+=2
             if correctA==2:
                 messagebox.showinfo("uzminēji")
@@ -122,7 +122,7 @@ img5=ImageTk.PhotoImage(Image.open("5.png"))
 img6=ImageTk.PhotoImage(Image.open("6.png"))
 
 imglist=[img1, img1, img2, img2, img3, img3, img4, img4, img5, img5, img6, img6]
-random.shuffle(imglist)
+random.shuffle(imglist) #'samaisa' fotogrāfijas
 
 
 
